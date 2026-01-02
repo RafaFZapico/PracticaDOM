@@ -153,3 +153,52 @@ document.body.appendChild(myFilters) //FUNCIONA CORRECTAMENTE INSERTANDO AL FINA
 let reference = document.querySelector('section')
 let parent = reference.parentNode
 parent.insertBefore(myFilters, reference)
+
+//! Añadimos una cabecera
+let myHeader = document.createElement('header')
+let brandImage = document.createElement('img')
+brandImage.classList.add('logo')
+brandImage.src =
+  'https://cdn.pccomponentes.com/img/logos/logo-pccomponentes.svg'
+myHeader.appendChild(brandImage)
+//let navBar = document.createElement('nav')
+document.body.appendChild(myHeader)
+let referenceB = document.querySelector('body')
+//console.log('la variable referenceB contiene: ', referenceB)
+let parentB = referenceB.parentNode
+console.log(parentB)
+parentB.insertBefore(myHeader, referenceB)
+let myNav = document.createElement('nav')
+//myHeader.appendChild(navBar)
+const navelementshref = ['#catalogo', '#buscar', '#cuenta', '#cesta']
+const navelementscont = ['Catálogo', ' ', 'Mi cuenta', 'Mi cesta']
+let myNavElement = document.createElement('ul')
+myNavElement.classList.add('navegacion')
+let contador = 0
+
+for (const i of navelementshref) {
+  let myHrefs = document.createElement('li')
+  if (i === '#buscar') {
+    let input2 = document.createElement('input')
+    input2.classList.add('inputbuscador')
+    input2.placeholder = 'Buscar artículo'
+    myHrefs.appendChild(input2)
+    myNavElement.appendChild(myHrefs)
+    contador++
+  } else {
+    let myAnchor = document.createElement('a')
+    myAnchor.innerText = navelementscont[contador]
+    myAnchor.href = i
+    //Introducimos el <anchor> dentro del <li>
+    myHrefs.appendChild(myAnchor)
+    myNavElement.appendChild(myHrefs)
+    contador++
+  }
+
+  //console.log('Mis li contienen:', myHrefs)
+  //console.log('Mis anclas contienen:', myAnchor)
+
+  //console.log('', myNavElement)
+}
+myNav.appendChild(myNavElement)
+myHeader.appendChild(myNav)
