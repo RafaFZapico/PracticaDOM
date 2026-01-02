@@ -8,6 +8,8 @@ const products = [
     image:
       'https://thumb.pccomponentes.com/w-300-300/articles/1005/10057282/1639-hp-essential-255-g8-amd-3020e-8gb-256gb-ssd-156.jpg'
   },
+  // Añade aquí al menos 9 productos más para tener un total de 10 productos
+  // puedes cambiar los campos de cada objeto si es necesario para tu diseño...
   {
     name: 'Portátil Apple Macbook Air Apple M4 ',
     price: 859,
@@ -89,12 +91,10 @@ const products = [
     image:
       'https://thumb.pccomponentes.com/w-530-530/articles/1094/10942546/1596-portatil-asus-vivobook-15-f1504va-bq150-156-intel-core-i3-1315u-8gb-512gb-ssd-azul.jpg'
   }
-
-  // Añade aquí al menos 9 productos más para tener un total de 10 productos
-  // puedes cambiar los campos de cada objeto si es necesario para tu diseño...
 ]
 
 // recorremos el array products con bucle for...of para introducir los productos en un contenedor con clase class="container_Two" usando etiqueta <section>.
+let maincontain = document.createElement('main')
 let containerTwo = document.createElement('section')
 containerTwo.classList.add('container_two')
 for (const i of products) {
@@ -113,12 +113,15 @@ for (const i of products) {
       cardList.appendChild(liElement)
     }
   }
+  //vinculamos las imágenes a los cards
   image.src = i.image
   cards.appendChild(cardList)
   cards.appendChild(image)
   containerTwo.appendChild(cards)
-  document.body.appendChild(containerTwo)
+  maincontain.appendChild(containerTwo)
+  document.body.appendChild(maincontain)
 }
+//creamos el array con las marcas que se usarán como filtro
 const marcas = [
   'Acer',
   'Alurin',
@@ -149,7 +152,7 @@ for (const i of marcas) {
   myFilters.appendChild(myMarks)
 }
 document.body.appendChild(myFilters) //FUNCIONA CORRECTAMENTE INSERTANDO AL FINAL.
-//Queremos insertarlo al principio del body, así que haremos:
+//Queremos insertarlo al principio del main y delante del container two, así que haremos:
 let reference = document.querySelector('section')
 let parent = reference.parentNode
 parent.insertBefore(myFilters, reference)
@@ -161,21 +164,15 @@ brandImage.classList.add('logo')
 brandImage.src =
   'https://cdn.pccomponentes.com/img/logos/logo-pccomponentes.svg'
 myHeader.appendChild(brandImage)
-//let navBar = document.createElement('nav')
-document.body.appendChild(myHeader)
-let referenceB = document.querySelector('body')
-//console.log('la variable referenceB contiene: ', referenceB)
+let referenceB = document.querySelector('main')
 let parentB = referenceB.parentNode
-console.log(parentB)
 parentB.insertBefore(myHeader, referenceB)
 let myNav = document.createElement('nav')
-//myHeader.appendChild(navBar)
 const navelementshref = ['#catalogo', '#buscar', '#cuenta', '#cesta']
 const navelementscont = ['Catálogo', ' ', 'Mi cuenta', 'Mi cesta']
 let myNavElement = document.createElement('ul')
 myNavElement.classList.add('navegacion')
 let contador = 0
-
 for (const i of navelementshref) {
   let myHrefs = document.createElement('li')
   if (i === '#buscar') {
@@ -194,11 +191,6 @@ for (const i of navelementshref) {
     myNavElement.appendChild(myHrefs)
     contador++
   }
-
-  //console.log('Mis li contienen:', myHrefs)
-  //console.log('Mis anclas contienen:', myAnchor)
-
-  //console.log('', myNavElement)
 }
 myNav.appendChild(myNavElement)
 myHeader.appendChild(myNav)

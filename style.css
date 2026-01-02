@@ -1,7 +1,11 @@
 body {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: space-evenly;
+}
+main {
+  display: flex;
+  flex-direction: row;
 }
 .container_one {
   display: flex;
@@ -48,8 +52,7 @@ ul {
   }
 }
 @media screen and (max-width: 730px) {
-  body {
-    display: flex;
+  main {
     flex-direction: column;
   }
   .container_one {
@@ -78,15 +81,9 @@ header {
 nav {
   width: 100%;
   margin: 0 20px;
-  /* display: flex;
-  margin: 5px;
-  width: 30%;
-  flex-grow: 1;
-  flex-shrink: 1;
-  font-size: clamp(0.5em, 1em, 5em); */
 }
 .navegacion {
-  padding-left: 0px;
+  padding: 0px 8px;
   display: flex;
   align-items: center;
   border: 1px solid black;
@@ -96,14 +93,7 @@ nav {
   gap: 5%;
   flex-grow: 1;
   flex-shrink: 1;
-  /* font-size: 50px; */
   font-size: clamp(20px, 2vw, 5em);
-}
-.navegacion > li {
-  /* flex-grow: 1;
-  flex-shrink: 1;
-  /* font-size: 30px; */
-  /* font-size: clamp(0.1em, 3vw, 5em);  */
 }
 .inputbuscador {
   height: 25px;
@@ -112,8 +102,9 @@ nav {
   border: 2px solid black;
   border-radius: 6px;
   width: 80%;
-  /* hay que hacer que las letras sean responsive*/
+  /* hay que hacer que las letras del input sean responsive*/
 }
 input::placeholder {
+  /* con esta instrucción conseguimos que las letras del input sean responsive*/
   font-size: clamp(10px, 2vw, 1em);
 }
